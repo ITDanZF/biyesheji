@@ -1,0 +1,24 @@
+stages:
+  - stage1
+  - stage2
+  - stage3
+
+job 1:
+  stage: stage1
+  script: echo job1
+
+job 2:
+  stage: stage2
+  script: echo job2
+
+job 3:
+  stage: stage3
+  script:
+    - echo job3-1
+    - echo job3-2
+
+# 指定缓存的文件和数据
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
